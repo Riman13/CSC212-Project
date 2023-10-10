@@ -1,14 +1,15 @@
 import java.util.Scanner;
 
 public class Contact implements Comparable<String> {
-	
-	 private String Contact_name;
+	//Attributes
+	    private String Contact_name;
 	    private String phoneNumber;
 	    private String emailAddress;
 	    private String address;
 	    private String birthday;
 	    private String notes;
 
+	    //Constructor
 	    public Contact() {
 	    }
 	    
@@ -32,9 +33,17 @@ public class Contact implements Comparable<String> {
 		    }
 
 			@Override
-			public int compareTo(String cc) {
-				return Contact_name.compareTo(cc);
+			public int compareTo(String s) {
+				return Contact_name.compareTo(s);
 			}
+			
+			public int compareTo(Contact c) {
+				return Contact_name.compareTo(c.Contact_name);
+			}
+
+		
+
+			
 		     // Getter methods to retrieve contact information
 
 		    public String getContact_name() {
@@ -53,7 +62,7 @@ public class Contact implements Comparable<String> {
 		        return address;
 		    }
 
-		    public Date getBirthday() {
+		    public String getBirthday() {
 		        return birthday;
 		    }
 
@@ -99,6 +108,5 @@ public class Contact implements Comparable<String> {
 
 	}
 
-		
+}//end class
 
-}
