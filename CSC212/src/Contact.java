@@ -1,28 +1,44 @@
-import java.util.Date;
+import java.util.Scanner;
 
-public class Contact {
+public class Contact implements Comparable<String> {
 	
-	 private String name;
+	 private String Contact_name;
 	    private String phoneNumber;
 	    private String emailAddress;
 	    private String address;
-	    private Date birthday;
+	    private String birthday;
 	    private String notes;
 
+	    public Contact() {
+	    }
+	    
 		//Constructor to initialize contact
-		    public Contact(String name, String phoneNumber, String emailAddress, String address, Date birthday, String notes) {
-		        this.name = name;
+		    public Contact(String Contact_name, String phoneNumber, String emailAddress, String address, String birthday, String notes) {
+		        this.Contact_name = Contact_name;
 		        this.phoneNumber = phoneNumber;
 		        this.emailAddress = emailAddress;
 		        this.address = address;
 		        this.birthday = birthday;
 		        this.notes = notes;
 		    }
+		    
+		    public Contact(Contact c) {
+		        this.Contact_name = c.Contact_name;
+		        this.phoneNumber = c.phoneNumber;
+		        this.emailAddress = c.emailAddress;
+		        this.address = c.address;
+		        this.birthday = c.birthday;
+		        this.notes = c.notes;
+		    }
 
+			@Override
+			public int compareTo(String cc) {
+				return Contact_name.compareTo(cc);
+			}
 		     // Getter methods to retrieve contact information
 
-		    public String getName() {
-		        return name;
+		    public String getContact_name() {
+		        return Contact_name;
 		    }
 
 		    public String getPhoneNumber() {
@@ -46,8 +62,8 @@ public class Contact {
 		    }
 
 		     // Setter methods to modify contact information
-		    public void setName(String name) {
-				this.name = name;
+		    public void setContact_name(String Contact_name) {
+				this.Contact_name = Contact_name;
 			}
 
 			public void setPhoneNumber(String phoneNumber) {
@@ -62,7 +78,7 @@ public class Contact {
 				this.address = address;
 			}
 
-			public void setBirthday(Date birthday) {
+			public void setBirthday(String birthday) {
 				this.birthday = birthday;
 			}
 
@@ -74,7 +90,7 @@ public class Contact {
 		    // toString method
 
 		    public String toString() {
-		        return "Name: "+ name+
+		        return "Contact Name: "+ Contact_name+
 		               "/nPhone Number: "+ phoneNumber+
 		               "/nEmail Address: " +emailAddress  +
 		               "/nAddress: " +address  +
@@ -82,5 +98,7 @@ public class Contact {
 		               "/nNotes: "+ notes;
 
 	}
+
+		
 
 }
