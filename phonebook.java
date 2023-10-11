@@ -3,7 +3,7 @@ import java.util.Scanner ;
 public class phonebook {
  static LinkedList<Contact> contact ;
  public phonebook () {
-this.contact = contact ;
+this.Contact = Contact ;
 }
  public boolean Search (Contact c) {
      if (!contact.isEmpty()) {
