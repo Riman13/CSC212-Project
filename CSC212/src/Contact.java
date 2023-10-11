@@ -56,7 +56,7 @@ public class Contact implements Comparable<String> {
             
                } // END FOR , CHECK CONFLICT EVENT 
         
-              events.
+              events.insert(e);
            return true;    
     }
 
