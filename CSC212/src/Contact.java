@@ -61,8 +61,9 @@ public class Contact implements Comparable<String> {
                       } // END FOR , CHECK CONFLICT EVENT 
         
                     events.insert(e);
+		    System.out.println("Event scheduled successfully!")
                     return true;    
-                 }//End Method
+                    }//End Method
 
 
 		
