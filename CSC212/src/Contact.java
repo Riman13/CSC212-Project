@@ -43,22 +43,22 @@ public class Contact implements Comparable<String> {
 
 	          public boolean addEvent( Event e ) {
     
-                  if ( !events.empty())
+                      if ( !events.empty())
             
-                 events.findFirst();
-                 for (int i = 0 ; i < events.size ; i++){
+                       events.findFirst();
+			  
+                       for (int i = 0 ; i < events.size ; i++){
             
-                if ((events.retrieve().getDate().compareTo(e.getDate()) == 0 ) &&
-                    (events.retrieve().getTime().compareTo(e.getTime()) == 0))
-                 return false; 
+                       if ((events.retrieve().getDate().compareTo(e.getDate()) == 0 ) && (events.retrieve().getTime().compareTo(e.getTime()) == 0))
+                            return false; 
             
-                 events.findNext();
+                        events.findNext();
             
-               } // END FOR , CHECK CONFLICT EVENT 
+                      } // END FOR , CHECK CONFLICT EVENT 
         
-              events.insert(e);
-           return true;    
-    }
+                    events.insert(e);
+                    return true;    
+                 }//End Method
 
 
 		
