@@ -8,9 +8,11 @@ public class Contact implements Comparable<String> {
 	    private String address;
 	    private String birthday;
 	    private String notes;
+	    LinkedList <Event> events ;
 
 	    //Constructor
 	    public Contact() {
+		    events = new LinkedList<Event>();
 	    }
 	    
 		//Constructor to initialize contact
@@ -21,6 +23,7 @@ public class Contact implements Comparable<String> {
 		        this.address = address;
 		        this.birthday = birthday;
 		        this.notes = notes;
+			events = new LinkedList<Event>();
 		    }
 		    
 		    public Contact(Contact c) {
@@ -30,6 +33,7 @@ public class Contact implements Comparable<String> {
 		        this.address = c.address;
 		        this.birthday = c.birthday;
 		        this.notes = c.notes;
+			events = new LinkedList<Event>();
 		    }
 
 			@Override
