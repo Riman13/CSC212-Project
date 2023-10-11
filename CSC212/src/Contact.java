@@ -41,6 +41,26 @@ public class Contact implements Comparable<String> {
 				return Contact_name.compareTo(c.Contact_name);
 			}
 
+	          public boolean addEvent( Event e ) {
+    
+                  if ( !events.empty())
+            
+                 events.findFirst();
+                 for (int i = 0 ; i < events.size ; i++){
+            
+                if ((events.retrieve().getDate().compareTo(e.getDate()) == 0 ) &&
+                    (events.retrieve().getTime().compareTo(e.getTime()) == 0))
+                 return false; 
+            
+                 events.findNext();
+            
+               } // END FOR , CHECK CONFLICT EVENT 
+        
+              events.
+           return true;    
+    }
+
+
 		
 
 			
