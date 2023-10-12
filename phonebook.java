@@ -2,25 +2,31 @@
 import java.util.Scanner ;
 public class phonebook {
  static LinkedList<Contact> contact ;
+  static LinkedList<Contact> event ;
  public phonebook () {
-this.Contact = Contact ;
+this.contact = contact ;
+this.event = event
 }
  public boolean Search (Contact c) {
-     if (!contact.isEmpty()) {
+     if (contact.isEmpty()== false) {
  contact.findFirst();
-  if (contact.retrieve().getCongetContact_name().copmareTo(c.getContact_name())||
-          contact.retrieve().getPhoneNumber().compareTO(c.getPhoneNumber())){
- }
- retun false ; }
-public void addContact (Contact c) {
- if (Search(c)!=false)
- {contact.Adding(c);
- for (int i = ; )
+ while (contact.last()== false) {
+  if ((contact.retrieve().getContact_name().equalsIgnoreCase(c.getContact_name()))||
+        (contact.retrieve().getPhoneNumber().equals(c.getPhoneNumber())))
+           return true;
+      contact.findNext(); }
+      if ((contact.retrieve().getContact_name().equalsIgnoreCase(c.getContact_name()))||
+        (contact.retrieve().getPhoneNumber().equals(c.getPhoneNumber())))
+           return true;
+      return true;
+      }
+     return false;}
  
- }   
-    
-    
-}
+public void addContact (Contact c) {
+ if (Search(c)==false)
+ 
+ contact.insert(c);   
+    }
  
  
  
@@ -28,36 +34,74 @@ public void addContact (Contact c) {
 
  
 public void deleteContact (String con) {
-if (contact.isEmpty()){
-System.out.println ("The list is empty you can't delete it");
-        return;
-}
+if (contact.isEmpty()== false){
+
 contact.findFirst();
-while (!contact.last()) {
-    if (contact.retrieve().getCongetContact_name().equalsIgnoreCase(con)){
-    contact.remove();
-    System.out.println ("contact" + n + " has been deleted successfully");
+while (contact.last()== false) {
+    if (contact.retrieve().getContact_name().equalsIgnoreCase(con)){
+    contact.delete();
+    System.out.println ("contact" + con + " has been deleted successfully");
     return;
     }
     contact.findNext();
 }
-  if (contact.retrieve().getCongetContact_name().equalsIgnoreCase(con)){
-    contact.remove();
-    System.out.println ("contact" + n + " has been deleted successfully");
-    return;
-
+  if (contact.retrieve().getContact_name().equalsIgnoreCase(con)=0){
+    contact.delete();
+    System.out.println ("contact" + con + " has been deleted successfully");
+    return; }
+System.out.println ("The list is empty you can't delete it");
+        return;
 }}
 
-public LinkedList<Contact> searchByEmail(String eml){   
-    
+public LinkedList<Contact> searchByEmail(String eml){ 
+ LinkedList<Contact> eventByType = new LinkedList<Contact> ()  ;    
+  if (contact.isEmpty()==false){
+contact.findFirst();
+while (contact.last()== false) {
+    if (contact.retrieve().getEmailAddress().equalsIgnoreCase(eml)){
+    eventByType.insert(contact.retrieve());
+    contact.findNext();
+    } }
+        if (contact.retrieve().getEmailAddress().equalsIgnoreCase(eml))
+         eventByType.insert(contact.retrieve());
+}
+ return eventByType ;
 }
  
- public LinkedList<Contact> searchByAdress(String adrs){}
+ public LinkedList<Contact> searchByAdress(String adrs){
+      LinkedList<Contact> eventByType = new LinkedList<Contact> ()  ;    
+  if (contact.isEmpty()==false){
+contact.findFirst();
+while (contact.last()== false) {
+    if (contact.retrieve().getAddress().equalsIgnoreCase(adrs)){
+    eventByType.insert(contact.retrieve());
+    contact.findNext();
+    } }
+        if (contact.retrieve().getAddress().equalsIgnoreCase(adrs))
+         eventByType.insert(contact.retrieve());
+}
+ return eventByType ;
+}
  
- public LinkedList<Contact> searchByBirthday(String birth){}
+ public LinkedList<Contact> searchByBirthday(String birth){
+           LinkedList<Contact> eventByType = new LinkedList<Contact> ()  ;    
+  if (contact.isEmpty()==false){
+contact.findFirst();
+while (contact.last()== false) {
+    if (contact.retrieve().getBirthday().equals(birth)){
+    eventByType.insert(contact.retrieve());
+    contact.findNext();
+    } }
+       if (contact.retrieve().getAddress().equals(birth))
+         eventByType.insert(contact.retrieve());
+}
+ return eventByType ;
+}
+ }
  
  
     public static void displayMenu () {
+    do {
     Scanner input = new Scanner (System.in);
     System.out.println ("Welcome to the linked tree phonebook! \nPlease choose an option :");
     System.out.println ("1. Add a contact");
@@ -107,6 +151,6 @@ public LinkedList<Contact> searchByEmail(String eml){
          
             
     
-    }
+    } while(true);
 }
 }
