@@ -1,0 +1,127 @@
+public class LinkedList<T extends Comparable<T>> {
+
+    private Node<T> head;
+    private Node<T> current;
+    int size ;
+
+    public LinkedList() {
+        head = current = null;
+        size = 0 ;
+
+    }
+
+    public boolean isEmpty() {
+        return head == null;
+    }
+
+    public boolean last() {
+        return current.next == null;
+    }
+
+    public boolean full() {
+        return false;
+    }
+
+    public void findFirst() {
+        current = head;
+    }
+
+    public void findNext() {
+        current = current.next;
+    }
+
+    public T retrieve() {
+        return current.data;
+    }
+
+    public void update(T val) {
+        current.data = val;
+    }
+
+    public boolean insertSort(T val) {
+
+        Node<T> tmp = new Node(val);
+        if (head == null || head.data.compareTo((T) tmp) > 0) {
+            tmp.next = head;
+            head = tmp;
+        }// End outer if
+        else {
+
+            Node<T> q = head;
+            Node<T> p = head.next;
+
+            while ((p != null) && (p.data.compareTo((T) tmp) <= 0)) {
+                q = p;
+                p = p.next;
+            }// End of the loop to reach the correct addition location alphabetically 
+
+            if (p != null) {
+                tmp.next = p;
+                q.next = tmp;
+                current = tmp;
+            }//End inner if
+            else {
+                p.next = tmp;
+                current = tmp;
+            }//End inner else
+
+        }// End outer Else
+
+        size++;
+        return true;
+
+    }
+
+    public boolean search(T val) {
+
+        Node<T> tmp = head;
+
+        if (this.isEmpty() == true) {
+            return false;
+        }
+
+        while (tmp != null) {
+            if (tmp.data.compareTo((T) val) == 0) {
+                current = tmp;
+                return true; // Value found in the list
+            }
+            tmp = tmp.next;
+        }
+        return false; // Value not found in the list
+
+    }
+
+    public T remove(T val) {
+
+//check if it is found or not with search method 
+        if (search(val) == false) {
+            return null;
+        }
+
+        T tmp = current.data;
+
+//check head
+        if (current == head) {
+            head = head.next;
+        } else {
+            Node<T> p = head.next;
+            Node<T> q = head;
+
+            while (p != tmp) {
+
+                q = p;
+                p = p.next;
+
+            }
+
+            if (p == tmp) {
+
+                q.next = p.next;
+            }
+        }
+        size--;
+        return tmp;
+
+    }
+
+}//End class
