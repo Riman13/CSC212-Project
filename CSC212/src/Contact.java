@@ -41,23 +41,38 @@ public class Contact implements Comparable<String> {
 
 public boolean addEvent( Event e ) {
     
-                      if ( !events.empty()) {
+   if ( !events.empty()) {
             
-                       events.findFirst();
+         events.findFirst();
 			  
-                       for (int i = 0 ; i < events.size ; i++){
+         for (int i = 0 ; i < events.size ; i++){
             
-                       if ((events.retrieve().getDate().equals(e.getDate()) ) && (events.retrieve().getTime().equals(e.getTime())))
+             if ((events.retrieve().getDate().equals(e.getDate()) ) && (events.retrieve().getTime().equals(e.getTime())))
                             return false; 
             
-                        events.findNext();
+                events.findNext();
             
-                      } // END FOR , CHECK CONFLICT EVENT 
-                      }//End if
-                    events.insert(e);
-		    System.out.println("Event scheduled successfully!")
-                    return true;    
-                    }//End Method
+                } // END FOR , CHECK CONFLICT EVENT 
+        }//End if
+events.insert(e);
+ System.out.println("Event scheduled successfully!")
+ return true;    
+ }//End Method
+
+	
+//remove event
+public boolean removeEvent( Event e)
+    {
+        if (events.isEmpty())
+            return false;
+        
+        if (events.search(e))
+        {
+            events.delete(e);
+            return true;
+        }
+        return false;
+    }
 
 
 		
