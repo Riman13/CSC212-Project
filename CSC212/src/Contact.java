@@ -26,15 +26,9 @@ public class Contact implements Comparable<String> {
 			events = new LinkedList<Event>();
 		    }
 		    
-		    public Contact(Contact c) {
-		        this.Contact_name = c.Contact_name;
-		        this.phoneNumber = c.phoneNumber;
-		        this.emailAddress = c.emailAddress;
-		        this.address = c.address;
-		        this.birthday = c.birthday;
-		        this.notes = c.notes;
-			events = new LinkedList<Event>();
-		    }
+                    public Contact(String Contact_name) {
+                      this.Contact_name = Contact_name;
+                   }
 
 			@Override
 			public int compareTo(String s) {
