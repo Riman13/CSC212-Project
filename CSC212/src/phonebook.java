@@ -124,7 +124,7 @@ public void schedule (Contact ev, Event r){
          System.out.println("there's conflict");
    } }
 
- public static void printContactsSharingFirstName( String firstName){
+public static void printContactsSharingFirstName( String firstName){
 
 if (contact.isEmpty()){
 System.out.println("No Contacts found !");
@@ -159,6 +159,27 @@ contact.findNext();
 }//end if
 
 }//End method 
+
+public static void printContactsSharingEvent(Event e ){
+
+if(events.isEmpty()){
+System.out.println("No events found !");
+return;
+}//end if
+
+
+events.findFirst();
+
+for(int i =1 ; i <= events.size ; i++){
+
+if (events.retrieve().compareTo(e) == 0)
+events.retrieve().toString();
+
+events.findNext();
+
+}//end for
+
+}//end method
  
  
 
