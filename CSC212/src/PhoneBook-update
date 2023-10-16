@@ -220,13 +220,13 @@ public class PhoneBook {
 
 
     public static void schedule(Contact ev, Event r) {
-        if (contacts.search(ev) == true && ev.addEvent(r) == true) {
+        if (contacts.search(ev) == true && ev.addEventInContact(r) == true) {
             System.out.println("schedulling contact" + ev.getContact_name() + "" + r.getTitle());
         } else {
             if (contacts.search(ev) == false) {
                 System.out.println("contact does't exit");
             }
-            if (ev.addEvent(r) == false) {
+            if (ev.addEventInContact(r) == false) {
                 System.out.println("there's conflict");
             }
         }
