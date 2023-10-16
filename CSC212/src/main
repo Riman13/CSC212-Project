@@ -1,42 +1,175 @@
-    public static void main(String[] args) {
+import java.util.Scanner;
+import java.util.LinkedList;
 
-        int choice;
+public class main  {
+    public static void main(String[] args) {
+    	phonebook p1 = new phonebook();
         Scanner input = new Scanner(System.in);
 
-        do {
 
-            System.out.println("Please choose an option:");
-            System.out.println("1. Add a contact");
-            System.out.println("2. Search for a contact");
-            System.out.println("3. Delete a contact");
-            System.out.println("4. Schedule an event");
-            System.out.println("5. Print event details");
-            System.out.println("6. Print contacts by first name");
-            System.out.println("7. Print all events alphabetically");
-            System.out.println("8. Exit");
-            System.out.println("\nEnter your choice: ");
-            choice = input.nextInt();
+
+        while (true) {
+        	phonebook.displayMenu();
+        	int choice = input.nextInt();
 
             switch (choice) {
 
-                case 1: {
+                case 1: 
+                	addContact(p1);  
+                	
+                	break;
+                
+                case 2:
+                    System.out.println("Enter search criteria:");
+                    System.out.println("1. Name");
+                    System.out.println("2. Phone Number");
+                    System.out.println("3. Email Address");
+                    System.out.println("4. Address");
+                    System.out.println("5. Birthday");
+                    System.out.print("Enter your choice: ");
+                    int choiceSearch = input.nextInt();
+                    
+                    switch(choiceSearch) {
+                    case 1: 
+                    	 System.out.print("Enter the contact's name: ");
+                         String name = input.nextLine();
+                         Contact foundContact = phonebook.searchByName(name);
+                         if (foundContact != null) {
+                             System.out.println("Contact found:\n" + foundContact);
+                         } else 
+                             System.out.println("Contact not found.");
+                         
+                    	break;
+                    	
+                      case 2: 
+                    	 System.out.print("Enter the phone number: ");
+                         String phoneNumber = input.nextLine();
+                         Contact foundByPhone = phonebook.searchByPhone(phoneNumber);
+                         if (foundByPhone != null) {
+                             System.out.println("Contact found by phone number:\n" + foundByPhone);
+                         } else 
+                             System.out.println("Contact not found.");
+                    	break;
+                    	
+                     case 3: 
+                    	 System.out.print("Enter the email address: ");
+                         String email = input.nextLine();
+                         LinkedList<Contact> foundByEmail = phonebook.searchByEmail(email);
+                         if (!foundByEmail.isEmpty()) {
+                             System.out.println("Contacts found by email:"+ foundByEmail);
+  
+                         } else 
+                        	 
+                             System.out.println("No contacts found by email.");
+                         
+                    	break;
+                    	
+                     case 4: 
+                    	  System.out.print("Enter the address: ");
+                          String address = input.nextLine();
+                          LinkedList<Contact> foundByAddress = phonebook.searchByAdress(address);
+                          if (foundByAddress != null) {
+                              System.out.println("Contact found by address:\n" + foundByAddress);
+                          } else 
+                              System.out.println("Contact not found.");
+                   
+                          break;
 
-                    System.out.print("Enter the contact's name:");
-                    String Name = input.nextLine();
-                    System.out.print("Enter the contact's phone number:");
-                    String PNo = input.next();
-                    System.out.print("Enter the contact's email address:");
-                    String Email = input.next();
-                    System.out.print("Enter the contact's address:");
-                    String address = input.next();
-                    System.out.print("Enter the contact's birthday:");
-                    Date date = new Date(input.nextLine());
-                    System.out.print("Enter any notes for the contact:");
-                    String note = input.nextLine();
-                }
-                break;
+                     	
+                     case 5: 
+                    	  System.out.print("Enter the birthday: ");
+                          String birthday = input.nextLine();
+                          LinkedList<Contact> foundByBirthday = phonebook.searchByBirthday(birthday);
+                          if (!foundByBirthday.isEmpty()) 
+                              System.out.println("Contacts found by birthday:"+foundByBirthday);
+                              else
+                              System.out.println("No contacts found by birthday.");
+                          
+                          break;
+                    
+                          default:
+                              System.out.println("Invalid sub-search criteria.");
+                  
+                    }//second switch
+      
+                case 3://delete
+                	if (removeContact(p1)==true);
+            	    System.out.print("deleted succsecfilly ");
 
-            }
+                    break;
+                    
+                    
+                case 4:
+   
+                	    break;
+                	
+
+
+
+             
+                case 5:
+                    System.out.println("Enter search criteria:");
+                    System.out.println("1. Contact name");
+                    System.out.println("2. Event title");
+                    System.out.print("Enter your choice: ");
+                    int searchEvent = input.nextInt();
+
+                    switch (searchEvent) {
+                        case 1:
+                            System.out.print("Enter the contact name: ");
+                            String searchContactName = input.nextLine();
+                            if (searchByName.equalsIgnoreCase(searchContactName))
+                            System.out.print("contact found"+searchContactName);
+                            else
+                                System.out.println("Contact not found.");
+                                    break;
+             
+                        case 2:
+                        	System.out.print("Enter the event title: ");
+                            String searchEventTitle = input.nextLine();
+                       
+                                    if (searchByEventTiltle.equalsIgnoreCase(searchEventTitle)) 
+                                        System.out.println("Event found!" +searchEventTitle );
+                                
+                                        else
+                                System.out.println("Event not found.");
+                            
+                            break;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                          
+                    }
+                                    
+                                 
+                        case 6:
+                            System.out.print("Enter the first name: ");
+                            String searchFirstName = input.nextLine();
+                            printContactsSharingFirstName(searchFirstName);
+                            break;
+                case 7:
+                	
+                    break;
+                case 8:
+                    System.out.println("Goodbye!");
+                 
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please select a valid option.");
+                	
+                	
+                	
+                	
+                	
+            }//switch   
+
+    }//while
+
+
+}//main
+    
+
+}//class
+
 
         } while (choice != 8);
 
