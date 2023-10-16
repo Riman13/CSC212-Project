@@ -10,38 +10,49 @@ public class PhoneBook {
         this.events = new LinkedList<Event>();
     }
 
-    //search about the contact if it is actually found in the list or not
-    public boolean Search(Contact c) {
-        if (contacts.isEmpty() == false) {
 
-            contacts.findFirst();
-
-            while (contacts.last() == false) {
-
-                if ((contacts.retrieve().getContact_name().equalsIgnoreCase(c.getContact_name()))
-                        || (contacts.retrieve().getPhoneNumber().equals(c.getPhoneNumber()))) {
-
-                    return true;
-                }// end inner if 
-
-                contacts.findNext();
-            }//end while loop
-
-            if ((contacts.retrieve().getContact_name().equalsIgnoreCase(c.getContact_name()))
-                    || (contacts.retrieve().getPhoneNumber().equals(c.getPhoneNumber()))) {
-                return true;
-            }// check for last Node
-        }
-        return false;
-    }
-
-    public void addContact(Contact c) {
-        if (Search(c) == false) {
+//method add for event and contact
+    public static boolean addContact(Contact c) {
+        if (contacts.search(c) == false) {
             contacts.insertSort(c);
+            return true ;
         }
+        else 
+            return false ;
+    }
+    
+    public static boolean addEvent(Event e) {
+        if (events.search(e) == false) {
+            events.insertSort(e);
+            return true ;
+        }
+        else 
+            return false ;
+    }
+    
+    public static boolean removeContact(Contact c) {
+
+        Contact tmp = contacts.remove(c);
+        if (tmp != null) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+    
+    public static boolean removeEvent(Event e) {
+
+        Event tmp = events.remove(e);
+        if (tmp != null) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
-    public void deleteContactwithEvents(String con) {
+    public static void deleteContactwithEvents(String con) {
 
         if (contacts.isEmpty() == false) {
             Contact d;
@@ -77,7 +88,7 @@ public class PhoneBook {
     }
 
     //advanced search functionality that allows users to search for contacts based on multiple criteria (e.g., name, phone number, email address).
-    public Contact searchByName(String n) {
+    public static Contact searchByName(String n) {
         if (contacts.isEmpty()) {
             return null;
         }
@@ -98,7 +109,7 @@ public class PhoneBook {
         return null;
     }
 
-    public Contact searchByPhone(String p) {
+    public static Contact searchByPhone(String p) {
         if (contacts.isEmpty()) {
             return null;
         }
@@ -119,7 +130,7 @@ public class PhoneBook {
         return null;
     }
 
-    public LinkedList<Contact> searchByEmail(String eml) {
+    public static LinkedList<Contact> searchByEmail(String eml) {
         LinkedList<Contact> eventByType = new LinkedList<Contact>();
         if (contacts.isEmpty() == false) {
             contacts.findFirst();
@@ -136,7 +147,7 @@ public class PhoneBook {
         return eventByType;
     }
 
-    public LinkedList<Contact> searchByAdress(String adrs) {
+    public static LinkedList<Contact> searchByAdress(String adrs) {
         LinkedList<Contact> eventByType = new LinkedList<Contact>();
         if (contacts.isEmpty() == false) {
             contacts.findFirst();
@@ -153,7 +164,7 @@ public class PhoneBook {
         return eventByType;
     }
 
-    public LinkedList<Contact> searchByBirthday(String birth) {
+    public static LinkedList<Contact> searchByBirthday(String birth) {
         LinkedList<Contact> eventByType = new LinkedList<Contact>();
         if (contacts.isEmpty() == false) {
             contacts.findFirst();
@@ -170,7 +181,7 @@ public class PhoneBook {
         return eventByType;
     }
 
-    public Event searchByEventTiltle(String title) {
+    public static Event searchByEventTiltle(String title) {
 
         if (events.isEmpty() == false) {
             events.findFirst();
@@ -187,7 +198,7 @@ public class PhoneBook {
         return null;
     }
 
-    public void searchEventBycontact(String con) {
+    public static void searchEventBycontact(String con) {
 
 
         if (contacts.isEmpty() == false) {
@@ -208,11 +219,11 @@ public class PhoneBook {
 
 
 
-    public void schedule(Contact ev, Event r) {
-        if (Search(ev) == true && ev.addEvent(r) == true) {
+    public static void schedule(Contact ev, Event r) {
+        if (contacts.search(ev) == true && ev.addEvent(r) == true) {
             System.out.println("schedulling contact" + ev.getContact_name() + "" + r.getTitle());
         } else {
-            if (Search(ev) == false) {
+            if (contacts.search(ev) == false) {
                 System.out.println("contact does't exit");
             }
             if (ev.addEvent(r) == false) {
@@ -245,7 +256,7 @@ public class PhoneBook {
                 if (name.equalsIgnoreCase(firstName)) {
 
                     System.out.println("Contact found!");
-                    System.out.println(contact.retrieve().toString() + "\n");
+                    System.out.println(contacts.retrieve().toString() + "\n");
                 }//End inner if 
 
                 contacts.findNext();
