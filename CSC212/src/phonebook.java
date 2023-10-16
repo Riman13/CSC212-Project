@@ -123,6 +123,42 @@ public void schedule (Contact ev, Event r){
        if (ev.addEvent(r)== false)
          System.out.println("there's conflict");
    } }
+
+ public static void printContactsSharingFirstName( String firstName){
+
+if (contact.isEmpty()){
+System.out.println("No Contacts found !");
+return;}
+
+
+String name;
+int j;
+
+if(!contact.isEmpty()){
+    
+contact.findFirst();
+
+for( int i = 1 ; i<= contact.size ; i++){
+
+name = contact.retrieve().getContact_name();
+
+
+j = name.indexOf(" ");
+name = name.substring(j);
+
+if(name.equalsIgnoreCase(firstName)){
+    
+System.out.println("Contact found!");
+System.out.println(contact.retrieve().toString() + "\n");
+}//End inner if 
+
+contact.findNext();
+}//end for
+
+
+}//end if
+
+}//End method 
  
  
 
