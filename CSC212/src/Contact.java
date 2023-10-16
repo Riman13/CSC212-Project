@@ -31,35 +31,24 @@ public class Contact implements Comparable<Contact> {
         this.Contact_name = Contact_name;
     }
 
-    public int compareTo(String s) {
-        return Contact_name.compareTo(s);
-    }
 
-    public int compareTo(Contact c) {
-        return Contact_name.compareTo(c.Contact_name);
-    }
 
-    public boolean addEvent(Event e) {
+    public boolean addEventInContact(Event e) {
 
         if (!events.isEmpty()) {
-
-            events.findFirst();
-
-            for (int i = 0; i < events.size; i++) {
-
-                if ((events.retrieve().getDate().compareTo(e.getDate()) == 0)  && (events.retrieve().getTime().compareTo(e.getTime()) == 0)) {
-                    return false;
-                }
-
-                events.findNext();
-
-            } // END FOR , CHECK CONFLICT EVENT 
+            
+        if(events.search(e))
+        return false ;
+        else{ 
+        events.insertSort(e);
+        return true ;
+        }
         }//End if
         events.insertSort(e);
         return true;
     }//End Method
 
-    public boolean removeEvent(Event e) {
+    public boolean removeEventFromContac(Event e) {
         if (events.isEmpty()) {
             return false;
         }
@@ -123,14 +112,33 @@ public class Contact implements Comparable<Contact> {
 
     // toString method
     public String toString() {
-        return "Contact Name: " + Contact_name
+        String str = "Contact Name: " + Contact_name
                 + "/nPhone Number: " + phoneNumber
                 + "/nEmail Address: " + emailAddress
                 + "/nAddress: " + address
                 + "/nBirthday: " + birthday
-                + "/nNotes: " + notes;
+                + "/nNotes: " + notes
+                + "/nEvents details:";
 
+        events.findFirst();
+        for (int i = 0; i < events.size; i++) {
+            str += "Event title"+events.retrieve().getTitle()  
+                +"/nEvent date and time (MM/DD/YYYY HH:MM):"+ events.retrieve().getDate()+ events.retrieve().getTime() 
+                +"/nEvent location"+events.retrieve().getLocation() +"/n";
+            events.findNext();
+        }
+        return str;
+    }
+    
+    public int compareTo(String s) {
+        return Contact_name.compareTo(s);
     }
 
+    public int compareTo(Contact c) {
+        return Contact_name.compareTo(c.Contact_name);
+    }
+
+
 }//end class
+
 
