@@ -1,3 +1,5 @@
+import static dsgethub.PhoneBook.contacts;
+
 public class Event implements Comparable<Event> {
 
     private String Title;
@@ -12,13 +14,7 @@ public class Event implements Comparable<Event> {
         this.time = time;
         this.location = location;
         contcts_Name = new LinkedList<Contact>();
-
-        if (!contact.search(c)) {
-            contact.addContact(c);
-        }
-
-        contcts_Name.insertSort(c);
-
+        this.addContactInEvent(c);
     }
 
     public Event() {
@@ -30,10 +26,10 @@ public class Event implements Comparable<Event> {
 
     }
 
-    public boolean addContact(Contact c) {
+    public boolean addContactInEvent(Contact c) {
 
-        if (!contact.search(c)) {
-            contact.addContact(c);
+        if (!contacts.search(c)) {
+            contacts.insertSort(c);
         }
 
         contcts_Name.insertSort(c);
@@ -41,7 +37,7 @@ public class Event implements Comparable<Event> {
 
     }
 
-    public boolean removeContact(Contact c) {
+    public boolean removeContactFromEvent(Contact c) {
 
         Contact tmp = contcts_Name.remove(c);
         if (tmp != null) {
@@ -94,7 +90,7 @@ public class Event implements Comparable<Event> {
 
         contcts_Name.findFirst();
         for (int i = 0; i < contcts_Name.size; i++) {
-            str += contcts_Name.retrieve().getContact_name() + "\t";
+            str += contcts_Name.retrieve().getContact_name() + "\n";
             contcts_Name.findNext();
         }
         return str;
