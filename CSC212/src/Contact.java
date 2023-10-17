@@ -36,18 +36,13 @@ public class Contact implements Comparable<Contact> {
     public boolean addEventInContact(Event e) {
 
         if (!events.isEmpty()) {
-
-            events.findFirst();
-
-            for (int i = 0; i < events.size; i++) {
-
-                if ((events.retrieve().getDate().compareTo(e.getDate()) == 0)  && (events.retrieve().getTime().compareTo(e.getTime()) == 0)) {
-                    return false;
-                }
-
-                events.findNext();
-
-            } // END FOR , CHECK CONFLICT EVENT 
+            
+        if(events.search(e))
+        return false ;
+        else{ 
+        events.insertSort(e);
+        return true ;
+        }
         }//End if
         events.insertSort(e);
         return true;
@@ -145,5 +140,4 @@ public class Contact implements Comparable<Contact> {
 
 
 }//end class
-
 
