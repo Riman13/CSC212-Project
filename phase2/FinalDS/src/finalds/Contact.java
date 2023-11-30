@@ -71,6 +71,19 @@ package finalds;
         }
         return false;
     }
+        public boolean removeEvent( String eventTitle)
+    {
+        if (events_contact.isEmpty())
+            return false;
+       Event val = new Event();
+       val.title = eventTitle;
+        if (events_contact.search(val))
+        {
+            events_contact.remove(val);
+            return true;
+        }
+        return false;
+    }
 
     // Getter methods to retrieve contact information
     public String getContact_name() {
@@ -145,12 +158,75 @@ package finalds;
         return str;
     }
     
-    public int compareTo(String s) {
-        return Contact_name.compareTo(s);
+
+    
+    @Override
+    public int compareTo(Contact o) {
+        try {
+            return (this.Contact_name.compareToIgnoreCase(o.Contact_name));
+        }
+        catch (Exception e)
+        {
+             //To change body of generated methods, choose Tools | Templates.
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
     }
 
-    public int compareTo(Contact c) {
-        return Contact_name.compareTo(c.Contact_name);
+    
+    public int compareToPhone(String Phone) {
+        try {
+            return (this.phoneNumber.compareToIgnoreCase(Phone));
+        }
+        catch (Exception e)
+        {
+             //To change body of generated methods, choose Tools | Templates.
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
+
+    public int compareToEmail(String emailaddress) {
+        try {
+            return (this.emailAddress.compareToIgnoreCase(emailaddress));
+        }
+        catch (Exception e)
+        {
+             //To change body of generated methods, choose Tools | Templates.
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
+
+    public int compareToAddress(String address) {
+        try {
+            return (this.address.compareToIgnoreCase(address));
+        }
+        catch (Exception e)
+        {
+             //To change body of generated methods, choose Tools | Templates.
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
+
+    public int compareToBirthday(String birthday) {
+        try {
+            return (this.birthday.compareTo(birthday) ) ;
+        }
+        catch (Exception e)
+        {
+             //To change body of generated methods, choose Tools | Templates.
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
+    
+    public int compareFirstName(String name) {
+        try {
+            String [] all = this.Contact_name.split(" ");
+            return (all[0].compareToIgnoreCase(name) ) ;
+        }
+        catch (Exception e)
+        {
+             //To change body of generated methods, choose Tools | Templates.
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
     }
 
 
