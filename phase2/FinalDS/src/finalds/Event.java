@@ -7,7 +7,7 @@ package finalds;
 
     
     public class Event implements Comparable<Event> {
-//atributes
+//attributes
     private String Title;
     private String date;
     private String time;
