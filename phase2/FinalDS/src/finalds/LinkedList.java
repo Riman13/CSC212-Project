@@ -152,15 +152,20 @@ public class LinkedList<T extends Comparable<T>> {
         return tmp;
 
     }
-    public  void print()  {
+    public  String  print()  {
         
-            Node  p = head;
+
+            
+            Node<T>  p = head;
+            String str = "" ;
+            
             while ( p != null)
             {
-                System.out.print(p.data + "    ");
+                str += p.data.toString();
+                str +=  "\n";
                 p = p .next;
             }
-            System.out.println("");
+            return str;
         
     		 
     	 
