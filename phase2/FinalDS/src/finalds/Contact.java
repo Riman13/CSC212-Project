@@ -7,7 +7,7 @@ package finalds;
     
     public class Contact implements Comparable<Contact> {
 
-    //Attributeshhh
+    //Attribute
     private String Contact_name;
     private String phoneNumber;
     private String emailAddress;
