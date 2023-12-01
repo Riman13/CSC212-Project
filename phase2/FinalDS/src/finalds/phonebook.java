@@ -233,9 +233,23 @@ public Contact searchByEmailOrAddressOrBirthday(String o) {
     }
     return null;
 }
+public Event searchByEventTitle(String title) {
+    if (!events.empty()) {
+        if (events.findkey(title)) {
+            return (Event) events.retrieve();
+        } else {
+            System.out.println("Event not found!");
+        }
+    } else {
+        System.out.println("The events list is empty.");
+    }
+    return null;
+}
+
+/* 
     public  Event searchByEventTiltle(String title) {
 
-        if (events.isEmpty() == false) {
+        if (events.empty() == false) {
             events.findFirst();
             while (events.last() == false) {
                 if (events.retrieve().getTitle().equalsIgnoreCase(title)) {
@@ -249,7 +263,8 @@ public Contact searchByEmailOrAddressOrBirthday(String o) {
         }
         return null;
     }
-
+    */
+/* 
     public void searchEventBycontact(String con) {
 
 
@@ -272,6 +287,31 @@ public Contact searchByEmailOrAddressOrBirthday(String o) {
         System.out.println("There is no event in the contact!");
     }
 
+
+*/
+public void searchEventByContact(String contactName) {
+    if (!contacts.empty()) {
+        if (contacts.findkey(contactName)) {
+            Contact contact = (Contact) contacts.retrieve();
+            System.out.println("Contact found!");
+            
+            if (!contact.events_contact.isEmpty()) {
+                contact.events_contact.findFirst();
+                for (int i = 0; i < contact.events_contact.size; i++) {
+                    Event event = (Event) contact.events_contact.retrieve();
+                    System.out.println(event.toString());
+                    contact.events_contact.findNext();
+                }
+            } else {
+                System.out.println("No events found for this contact!");
+            }
+        } else {
+            System.out.println("Contact not found!");
+        }
+    } else {
+        System.out.println("The contact list is empty.");
+    }
+}
 
 
  
@@ -356,7 +396,7 @@ public static void displayMenu() {
      System.out.println ("Enter your choice :");}
      
 
-
+/* 
 public Contact searchByName(String n) {
         if (contacts.isEmpty()) {
             return null;
@@ -377,7 +417,67 @@ public Contact searchByName(String n) {
 
         return null;
     }
- 
+*/ 
+public Contact searchByName(String name) {
+    if (!contacts.empty()) {
+        if (contacts.findkey(name)) {
+            return contacts.retrieve();
+        } else {
+            System.out.println("Contact not found!");
+        }
+    } else {
+        System.out.println("The contacts list is empty.");
+    }
+    return null;
+}
+
+
+
+//معدل خلاص  هذا رقم 4
+    public boolean conflict(Event e, Contact c) {
+        LinkedList<Event> events_contact = c.events_contact;
+        if (events_contact.isEmpty()) {
+            return false;
+        }
+    
+        events_contact.findFirst();
+        for (int i = 0; i < events_contact.size; i++) {
+            if (((events_contact.retrieve().getDate().compareTo(e.getDate()) == 0))
+                    && (events_contact.retrieve().getTime().compareTo(e.getTime()) == 0))
+                return true;
+            events_contact.findNext();
+        }
+    
+        return false;
+    }
+
+
+
+    
+    public void schedule(Event e, String con) {
+        Contact contact = contacts.searchByName(con);
+        if (contact == null) {
+            System.out.println("The contact does not exist");
+            return;
+        }
+    
+        boolean conflict = conflict(e, contact);
+    
+        if (contact != null && !conflict) {
+            System.out.println("\nEvent scheduled successfully!\n");
+    
+            contact.events_contact.insertSort(e);
+            e.addContactInEvent(contact);
+            events.insert(e.getTitle(), e);
+        } else {
+            if (contact == null)
+                System.out.println("\nThe contact does not exist");
+            if (conflict)
+                System.out.println("\nThere is a conflict with an existing event");
+        }
+    }
+    
+ /* 
  public boolean conflict(Event e , Contact C){
  LinkedList<Event>events_contact = C.events_contact;
  if (events_contact.isEmpty()){
@@ -412,6 +512,7 @@ public void schedule(Event e, String con) {
             System.out.println("\nthere's coflict");
             
     }}
+*/
 
 }
     

@@ -151,22 +151,22 @@ public class FinalDS {
                     break;
 
                 case 4:
-                    input.nextLine();
-                    System.out.print("Enter event title: ");
-                    String eventT = input.nextLine();
-                    System.out.print("Enter contact name: ");
-                    String ContactN = input.nextLine();
-                    System.out.print("Enter event date: ");
-                    String dateEvent = input.nextLine();
-                    System.out.print("Enter event Time: ");
-                    String eventTime = input.nextLine();
-                    System.out.print("Enter event location: ");
-                    String loc = input.nextLine();
+    
+                input.nextLine();
+                System.out.print("Enter event title: ");
+                String eventTitle = input.nextLine();
+                System.out.print("Enter contact name: ");
+                String contactName1 = input.nextLine();
+                System.out.print("Enter event date: ");
+                String eventDate = input.nextLine();
+                System.out.print("Enter event Time: ");
+                String eventTime = input.nextLine();
+                System.out.print("Enter event location: ");
+                String location = input.nextLine();
 
-                    Contact c3 = new Contact(ContactN);
-
-                    Event e = new Event(eventT, dateEvent, eventTime, loc, c3);
-                    p1.schedule(e, ContactN);
+                Contact contactForEvent = new Contact(contactName1);
+                Event event = new Event(eventTitle, eventDate, eventTime, location, true, contactForEvent);
+                p1.schedule(event, contactName1);
 
                     break;
 
@@ -176,7 +176,7 @@ public class FinalDS {
                     System.out.println("2. Event title");
                     System.out.println("Enter your choice: ");
                     int searchEvent = input.nextInt();
-
+                    input.nextLine();
                     switch (searchEvent) {
                         case 1:
                             System.out.print("Enter the contact name: ");
