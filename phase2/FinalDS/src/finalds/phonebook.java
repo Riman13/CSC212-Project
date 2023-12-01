@@ -5,16 +5,16 @@ package finalds;
 
 public class phonebook {
 
-    static LinkedList<Contact> contacts;
-    static LinkedList<Event> events;
+    public static BST <String, Contact> contacts ;
+    public static BST <String, Event> events ;
 
     //Constructor
 
 
     //Constructor
     public phonebook() {
-        phonebook.contacts = new LinkedList<Contact>();
-        phonebook.events = new LinkedList<Event>();
+        phonebook.contacts  = new BST <String, Contact>();
+        phonebook.events  = new BST <String, Event>();
     }
     
     
