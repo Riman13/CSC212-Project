@@ -278,7 +278,7 @@ public class BST<K extends Comparable<K>,T> {
     //==============================================
     // Search contcat email in the BST O(n)
     //==============================================
-    public void SearchEmail(String email)
+    public boolean SearchEmail(String email)
     {
         SearchEmail_rec (root, email);
     }
@@ -297,7 +297,7 @@ public class BST<K extends Comparable<K>,T> {
     //==============================================
     // Search contcat address in the BST O(n)
     //==============================================
-    public void SearchAddress(String address)
+    public boolean SearchAddress(String address)
     {
         SearchAddress_rec (root, address);
     }
@@ -315,7 +315,7 @@ public class BST<K extends Comparable<K>,T> {
     //==============================================
     // Search contcat birthday in the BST O(n)
     //==============================================
-    public void SearchBirthday(String birthday)
+    public boolean SearchBirthday(String birthday)
     {
         SearchBirthday_rec (root, birthday);
     }
