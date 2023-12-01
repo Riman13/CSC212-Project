@@ -115,7 +115,7 @@ public class BST<K extends Comparable<K>,T> {
     
     public boolean update(K key, T data)
     {
-                remove_key(current.key);
+                removeKey(current.key);
                 return insert(key, data);
     }
 
