@@ -101,41 +101,6 @@ public class BST<K extends Comparable<K>,T> {
             }
     }
 
-    public boolean remove_key (K tkey){
-            Boolean removed = new Boolean(false);
-            BSTNode<K,T>  p;
-            p = remove_aux(tkey, root, removed);
-            current = root = p;
-            return removed;
-    }
-    
-    private BSTNode<K,T>  remove_aux(K key, BSTNode<K,T>  p, Boolean flag) {
-            BSTNode<K,T>  q, child = null;
-            if(p == null)
-                    return null;
-            if(key.compareTo(p.key) <0)
-                    p.left = remove_aux(key, p.left, flag); //go left
-            else if(key.compareTo(p.key) >0)
-                    p.right = remove_aux(key, p.right, flag); //go right
-            else {
-                    flag = true;
-                    if (p.left != null && p.right != null){ //two children
-                            q = find_min(p.right);
-                            p.key = q.key;
-                            p.data = q.data;
-                            p.right = remove_aux(q.key, p.right, flag);
-                    }
-            else {
-                            if (p.right == null) //one child
-                                    child = p.left;
-                            else if (p.left == null) //one child
-                                    child = p.right;
-                            return child;
-                    }
-            }
-            return p;
-    }
-
     private BSTNode<K,T>  find_min(BSTNode<K,T>  p)
     {
             if(p == null)
@@ -150,11 +115,11 @@ public class BST<K extends Comparable<K>,T> {
     
     public boolean update(K key, T data)
     {
-                remove_key(current.key);
+                removeKey(current.key);
                 return insert(key, data);
     }
 
-    //Method removeKey: iterative  
+    //Method removeKey:  
     public boolean removeKey(K k) {
     // Search 
     K k1 = k;      
@@ -280,18 +245,21 @@ public class BST<K extends Comparable<K>,T> {
     //==============================================
     public boolean SearchEmail(String email)
     {
-        SearchEmail_rec (root, email);
+       return SearchEmail_rec (root, email);
     }
-    private void SearchEmail_rec (BSTNode <K, T> p, String email)
+    private boolean SearchEmail_rec (BSTNode <K, T> p, String email)
     {
         if (p == null)
-            return;
+            return false;
         
         else    if (((Contact)p.data).compareToEmail(email) == 0)
-            System.out.println(p.data);
+         {
+            current = p;
+            
+            return true;
+        }
         
-        SearchEmail_rec(p.left , email);
-        SearchEmail_rec(p.right, email);
+      return  SearchEmail_rec(p.left , email)|| SearchEmail_rec(p.right, email);
     }
     
     //==============================================
@@ -299,17 +267,21 @@ public class BST<K extends Comparable<K>,T> {
     //==============================================
     public boolean SearchAddress(String address)
     {
-        SearchAddress_rec (root, address);
+       return SearchAddress_rec (root, address);
+    
     }
-    private void SearchAddress_rec (BSTNode <K, T> p, String address)
+    private boolean SearchAddress_rec (BSTNode <K, T> p, String address)
     {
         if (p == null)
-            return ;
+            return false ;
         else    if (((Contact)p.data).compareToAddress(address) == 0)
-            System.out.println(p.data);
+        {
+            current = p;
+            
+            return true;
+        }
         
-        SearchAddress_rec(p.left , address);
-        SearchAddress_rec(p.right, address);
+        return SearchAddress_rec(p.left , address)||SearchAddress_rec(p.right, address);
     }
     
     //==============================================
@@ -317,17 +289,20 @@ public class BST<K extends Comparable<K>,T> {
     //==============================================
     public boolean SearchBirthday(String birthday)
     {
-        SearchBirthday_rec (root, birthday);
+        return SearchBirthday_rec (root, birthday);
     }
-    private void SearchBirthday_rec (BSTNode <K, T> p, String birthday)
+    private boolean SearchBirthday_rec (BSTNode <K, T> p, String birthday)
     {
         if (p == null)
-            return ;
+            return false ;
         else    if (((Contact)p.data).compareToBirthday(birthday) == 0)
-            System.out.println(p.data);
+        {
+            current = p;
+            
+            return true;
+        }
         
-        SearchBirthday_rec(p.left , birthday);
-        SearchBirthday_rec(p.right, birthday);
+        return SearchBirthday_rec(p.left , birthday)|| SearchBirthday_rec(p.right, birthday);
     }
 
     //==============================================
