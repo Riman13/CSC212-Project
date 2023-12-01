@@ -156,6 +156,9 @@ public class Event implements Comparable<Event> {
             throw new UnsupportedOperationException("Not supported yet.");
         }
     }
+
+    public void removeContact(String name) {
+    }
     
 }
     

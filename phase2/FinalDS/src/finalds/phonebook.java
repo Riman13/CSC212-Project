@@ -61,8 +61,8 @@ public class phonebook {
         else 
             return false ;
     }
-    
-    public boolean removeContact(Contact c) {
+ /*   
+   public boolean removeContact(Contact c) {
 
         Contact tmp = contacts.remove(c);
         if (tmp != null) {
@@ -83,8 +83,8 @@ public class phonebook {
         }
 
     }
-
-    public  void deleteContactwithEvents(String con) {
+ 
+ public  void deleteContactwithEvents(String con) {
 
         if (contacts.isEmpty() == false) {
             Contact d;
@@ -117,7 +117,51 @@ public class phonebook {
         else {
             System.out.println("The list is empty you can't delete it");
         }//end else 
+    } 
+
+ */
+
+ public boolean removeContact(Contact c) {
+    return contacts.removeKey(c.getContact_name());
+}
+
+public boolean removeEvent(Event e) {
+    return events.remove(e);
+}
+
+public void deleteContactWithEvents(String name) {
+    if (!contacts.empty()) {
+        if (contacts.findkey(name)) {
+            Contact deletedContact = (Contact) contacts.retrieve();
+            contacts.removeKey(name);
+
+            if (!deletedContact.events_contact.isEmpty()) {
+                deletedContact.events_contact.findFirst();
+                for (int i = 0; i < deletedContact.events_contact.size; i++) {
+                    Event event = (Event) deletedContact.events_contact.retrieve();
+                    if (events.findkey(event.getTitle())) {
+                        Event updatedEvent = (Event) events.retrieve();
+                        updatedEvent.removeContact(name);
+
+                        if (updatedEvent.getContcts_Name().isEmpty()) {
+                            events.removeKey(event.getTitle());
+                            System.out.println("the event has been deleted because it doesn't have any contacts.");
+                        } else {
+                            events.update(updatedEvent.getTitle(), updatedEvent);
+                        }
+                    }
+                    deletedContact.events_contact.findNext();
+                }
+            }
+
+            System.out.println("ontact " + deletedContact + " has been deleted successfully");
+        } else {
+            System.out.println("Contact not found!");
+        }
+    } else {
+        System.out.println("The contact list is empty.");
     }
+}
 
     
 public  Contact SearchsearchByNameOrPhone (String c) {
