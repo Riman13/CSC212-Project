@@ -163,7 +163,7 @@ public void deleteContactWithEvents(String name) {
     }
 }
 
-    
+  /*   
 public  Contact SearchsearchByNameOrPhone (String c) {
         
 
@@ -212,8 +212,27 @@ public  Contact SearchsearchByNameOrPhone (String c) {
         return contactShared;
   
     }
+*/
+public Contact searchByNameOrPhone(String c) {
+    if (contacts.empty())
+        return null;
 
+    // Try searching by name OR by phone number
+    if (contacts.findkey(c) || contacts.SearchPhone(c)) {
+        return contacts.retrieve();
+    }
+    // If not found by either, return null
+    return null;
+}
 
+public Contact searchByEmailOrAddressOrBirthday(String o) {
+    if (!contacts.empty()) {
+        if (contacts.SearchEmail(o) || contacts.SearchBirthday(o) || contacts.SearchAddress(o)) {
+            return contacts.retrieve();
+        }
+    }
+    return null;
+}
     public  Event searchByEventTiltle(String title) {
 
         if (events.isEmpty() == false) {
