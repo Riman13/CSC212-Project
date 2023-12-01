@@ -233,7 +233,7 @@ public Contact searchByEmailOrAddressOrBirthday(String o) {
     }
     return null;
 }
-public Event searchByEventTitle(String title) {
+public Event searchByEventTiltle(String title) {
     if (!events.empty()) {
         if (events.findkey(title)) {
             return (Event) events.retrieve();
@@ -289,7 +289,7 @@ public Event searchByEventTitle(String title) {
 
 
 */
-public void searchEventByContact(String contactName) {
+public void searchEventBycontact(String contactName) {
     if (!contacts.empty()) {
         if (contacts.findkey(contactName)) {
             Contact contact = (Contact) contacts.retrieve();
@@ -418,6 +418,7 @@ public Contact searchByName(String n) {
         return null;
     }
 */ 
+
 public Contact searchByName(String name) {
     if (!contacts.empty()) {
         if (contacts.findkey(name)) {
@@ -430,6 +431,7 @@ public Contact searchByName(String name) {
     }
     return null;
 }
+
 
 
 
