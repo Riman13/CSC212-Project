@@ -24,7 +24,7 @@ public class phonebook {
     public boolean addContact(Contact c) {
 
         
-        if (!contacts.isEmpty()&& contacts.search(c))
+        if (!contacts.empty()&& contacts.search(c))
         {
                 
                 return false;
