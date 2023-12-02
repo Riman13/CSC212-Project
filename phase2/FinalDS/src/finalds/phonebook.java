@@ -282,6 +282,7 @@ public Event searchByEventTiltle(String title) {
 
 
 */
+
 public void searchEventBycontact(String contactName) {
     if (!contacts.empty()) {
         if (contacts.findkey(contactName)) {
@@ -442,7 +443,7 @@ public Contact searchByName(String name) {
 
     
     public void schedule(Event e, String con) {
-        Contact contact = contacts.searchByName(con);
+        Contact contact = searchByName(con);
         if (contact == null) {
             System.out.println("The contact does not exist");
             return;

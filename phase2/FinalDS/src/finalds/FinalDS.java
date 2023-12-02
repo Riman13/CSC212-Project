@@ -154,7 +154,10 @@ public class FinalDS {
                  System.out.println("Enter type:");
                     System.out.println("1. event");
                     System.out.println("2. appointment");
+                    
+                    System.out.print("Enter your choice: ");
                     int ScheduleEA = input.nextInt();
+                    
                     input.nextLine();
                     switch(ScheduleEA){
                         case 1:
