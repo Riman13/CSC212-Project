@@ -93,11 +93,11 @@ public class FinalDS {
                             System.out.print("\nEnter the email address: ");
                             input.nextLine();
                             String email2 = input.nextLine();
-                            c3 = p1.searchByEmailOrAddressOrBirthday(email2);
+                            Contact c3 = p1.searchByEmailOrAddressOrBirthday(email2);
 
-                            if (!c3.isEmpty()) {
+                            if (c3 != null) {
                                 System.out.println("\nContact found:\n");
-                                c3.print();
+                                c3.toString();
                             } else {
                                 System.out.println("\nContact not found.");
                             }
@@ -109,11 +109,11 @@ public class FinalDS {
                             input.nextLine();
                             String add = input.nextLine();
                            
-                            c3 = p1.searchByEmailorAdressOrBirthday(add);
+                            Contact c4 = p1.searchByEmailOrAddressOrBirthday(add);
 
-                            if (!c3.isEmpty()) {
+                            if (c4 != null) {
                                 System.out.println("\nContact found:\n");
-                                c3.print();
+                                c4.toString();
                             } else {
                                 System.out.println("\nContact not found.");
                             }
@@ -123,11 +123,11 @@ public class FinalDS {
                             System.out.print("\nEnter the birthday: ");
                             input.nextLine();
                             String birth = input.nextLine();
-                            c3 = p1.searchByEmailorAdressOrBirthday(birth);
+                            Contact c5 = p1.searchByEmailOrAddressOrBirthday(birth);
 
-                            if (!c3.isEmpty()) {
+                            if (c5 != null) {
                                 System.out.println("\nContact found:\n");
-                                c3.print();
+                                c5.toString();
                             } else {
                                 System.out.println("\nContact not found.");
                             }
