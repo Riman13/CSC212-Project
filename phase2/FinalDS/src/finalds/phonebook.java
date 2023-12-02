@@ -445,7 +445,7 @@ public Contact searchByName(String name) {
     public void schedule(Event e, String con) {
         Contact contact = searchByName(con);
         if (contact == null) {
-            System.out.println("The contact does not exist");
+            
             return;
         }
     
@@ -502,6 +502,8 @@ public void schedule(Event e, String con) {
     }}
 */
     void SearchSamefName(String fname) {
+        if( !contacts.findkey(fname) || contacts.empty() )
+            System.out.println("\nContact not found!");
         contacts.SearchSameFirstName(fname);
     }
 
