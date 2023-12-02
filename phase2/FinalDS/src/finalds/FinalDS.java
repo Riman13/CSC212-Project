@@ -97,7 +97,7 @@ public class FinalDS {
 
                             if (c3 != null) {
                                 System.out.println("\nContact found:\n");
-                                c3.toString();
+                                System.out.println(c3.toString());
                             } else {
                                 System.out.println("\nContact not found.");
                             }
@@ -113,7 +113,7 @@ public class FinalDS {
 
                             if (c4 != null) {
                                 System.out.println("\nContact found:\n");
-                                c4.toString();
+                                System.out.println(c4.toString());
                             } else {
                                 System.out.println("\nContact not found.");
                             }
@@ -127,7 +127,7 @@ public class FinalDS {
 
                             if (c5 != null) {
                                 System.out.println("\nContact found:\n");
-                                c5.toString();
+                                System.out.println(c5.toString());
                             } else {
                                 System.out.println("\nContact not found.");
                             }
