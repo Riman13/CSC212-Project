@@ -17,6 +17,15 @@ class Node<T>{
 		next = null;
 	}
 
+        public T getData() {
+            return data;
+        }
+
+        public void setData(T data) {
+            this.data = data;
+        }
+
+
 
 }
 
@@ -171,6 +180,23 @@ public class LinkedList<T extends Comparable<T>> {
     	 
     	 
     }
+
+    @Override
+    public String toString() 
+    {
+           Node<T>  p = head;
+            String str = "" ;
+            
+            while ( p != null)
+            {
+                str += p.getData().toString();
+                str +=  "\n";
+                p = p .next;
+            }
+            return str;
+        }
+
+
     
 
 }//End class

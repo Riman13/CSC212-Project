@@ -119,7 +119,7 @@ public class phonebook {
 }
 
 public boolean removeEvent(Event e) {
-    return events.remove(e);
+    return events.removeKey(e.getTitle());
 }
 
 public void deleteContactWithEvents(String name) {
@@ -226,18 +226,8 @@ public Contact searchByEmailOrAddressOrBirthday(String o) {
     }
     return null;
 }
-public Event searchByEventTiltle(String title) {
-    if (!events.empty()) {
-        if (events.findkey(title)) {
-            return (Event) events.retrieve();
-        } else {
-            System.out.println("Event not found!");
-        }
-    } else {
-        System.out.println("The events list is empty.");
-    }
-    return null;
-}
+
+
 
 /* 
     public  Event searchByEventTiltle(String title) {
@@ -286,13 +276,13 @@ public Event searchByEventTiltle(String title) {
 public void searchEventBycontact(String contactName) {
     if (!contacts.empty()) {
         if (contacts.findkey(contactName)) {
-            Contact contact = (Contact) contacts.retrieve();
+            Contact contact = contacts.retrieve();
             System.out.println("Contact found!");
             
             if (!contact.events_contact.isEmpty()) {
                 contact.events_contact.findFirst();
                 for (int i = 0; i < contact.events_contact.size; i++) {
-                    Event event = (Event) contact.events_contact.retrieve();
+                    Event event = contact.events_contact.retrieve();
                     System.out.println(event.toString());
                     contact.events_contact.findNext();
                 }
@@ -307,11 +297,22 @@ public void searchEventBycontact(String contactName) {
     }
 }
 
-
+public Event searchByEventTiltle(String title) {
+    if (!events.empty()) {
+        if (events.findkey(title)) {
+            return events.retrieve();
+        } else {
+            System.out.println("Event not found!");
+        }
+    } else {
+        System.out.println("The events list is empty.");
+    }
+    return null;
+}
  
     
     
-
+/* 
     public void printContactsSharingFirstName(String firstName) {
         
                 if (contacts.isEmpty())
@@ -353,7 +354,7 @@ public void searchEventBycontact(String contactName) {
         }//end for
 
     }//end method
-    
+    */
     public void printAlphebeticllyOrder() {
 
         if (events.empty()) {
@@ -373,7 +374,7 @@ public static void displayMenu() {
     System.out.println ("1. Add a contact");
     System.out.println ("2. Search for a contact");
     System.out.println ("3. Delete a contact");
-    System.out.println ("4. Schedule an event");
+    System.out.println ("4. Schedule an event/appointment");
     System.out.println ("5. Print event detail");
     System.out.println ("6. Print contacts by first name");
     System.out.println ("7. Print all events alphebetically");

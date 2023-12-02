@@ -161,7 +161,7 @@ public class FinalDS {
                     input.nextLine();
                     switch(ScheduleEA){
                         case 1:
-                          input.nextLine();
+                         
                 System.out.print("Enter event title: ");
                 String eventTitle = input.nextLine();
                 System.out.print("Enter contact name: ");
@@ -180,12 +180,12 @@ public class FinalDS {
                     break;
 
                     case 2:
-                      input.nextLine();
+                      
                 System.out.print("Enter appointment title: ");
                 String eventTitle2 = input.nextLine();
                 System.out.print("Enter appointment name: ");
                 String contactName2 = input.nextLine();
-                System.out.print("Enter appointment date: ");
+                System.out.print("Ent1er appointment date: ");
                 String eventDate2 = input.nextLine();
                 System.out.print("Enter appointment Time: ");
                 String eventTime2 = input.nextLine();
@@ -197,44 +197,50 @@ public class FinalDS {
                 p1.schedule(event2, contactName2);
 
                     break;
+                         
+                default:
+                    System.out.println("Invalid choice. Please select a valid option.");
+
 
                     }
                     break;
 
-                case 5:
+                    case 5:
                     System.out.println("Enter search criteria:");
                     System.out.println("1. Contact name");
                     System.out.println("2. Event title");
                     System.out.println("Enter your choice: ");
+                    
+                    
+                    
                     int searchEvent = input.nextInt();
-                    input.nextLine();
+                    input.nextLine(); // Consume the newline character
+
+                    
+                    
                     switch (searchEvent) {
                         case 1:
                             System.out.print("Enter the contact name: ");
-                            input.nextLine();
+                            
                             String searchContactName = input.nextLine();
                             p1.searchEventBycontact(searchContactName);
-                            
-
                             break;
-
+                
                         case 2:
                             System.out.print("Enter the event title: ");
-                            input.nextLine();
                             String searchEventTitle = input.nextLine();
-                            Event result =p1.searchByEventTiltle(searchEventTitle);
-                            if ( result != null)
-                            System.out.println("Event found!\n" + result.toString());
+                            Event result = p1.searchByEventTiltle(searchEventTitle);
+                            if (result != null)
+                                System.out.println("Event found!\n" + result.toString());
                             else
-                            System.out.println("No Event found!" );
-                                
-
+                                System.out.println("No Event found!");
                             break;
+                
                         default:
                             System.out.println("Invalid choice. Please try again.");
-
                     }
                     break;
+                
 
                 case 6:
                     System.out.print("Enter the first name: ");
