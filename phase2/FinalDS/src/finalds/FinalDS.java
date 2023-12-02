@@ -2,12 +2,12 @@
 package finalds;
 
         
+
 import java.util.Scanner;
 
 public class FinalDS {
 
     public static phonebook p1 = new phonebook();
-    static LinkedList<Contact> c3 = new LinkedList<Contact>();
 
     public static void main(String[] args) {
 
@@ -67,7 +67,7 @@ public class FinalDS {
 
                             System.out.print("\nEnter the contact's name: ");
                             input.nextLine();
-                            Contact c1 = p1.SearchsearchByNameOrPhone(input.nextLine());
+                            Contact c1 = p1.searchByNameOrPhone(input.nextLine());
                             if (c1 != null) {
                                 System.out.println("\nContact found!\n");
                                 System.out.println(c1.toString());
@@ -80,7 +80,7 @@ public class FinalDS {
 
                             System.out.print("\nEnter the contact's phone number: ");
                             input.nextLine();
-                            Contact c2 = p1.SearchsearchByNameOrPhone(input.nextLine());
+                            Contact c2 = p1.searchByNameOrPhone(input.nextLine());
 
                             if (c2 != null) {
                                 System.out.println("\nContact found:\n" + c2.toString());
@@ -93,7 +93,7 @@ public class FinalDS {
                             System.out.print("\nEnter the email address: ");
                             input.nextLine();
                             String email2 = input.nextLine();
-                            c3 = p1.searchByEmailorAdressOrBirthday(email2);
+                            c3 = p1.searchByEmailOrAddressOrBirthday(email2);
 
                             if (!c3.isEmpty()) {
                                 System.out.println("\nContact found:\n");
@@ -209,7 +209,7 @@ public class FinalDS {
                     System.out.print("Enter the first name: ");
                     input.nextLine();
                     String searchFirstName = input.next();
-                    p1.printContactsSharingFirstName(searchFirstName);
+                    p1.SearchSamefName(searchFirstName);
 
                     break;
                 case 7:

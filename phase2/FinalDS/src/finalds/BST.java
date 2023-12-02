@@ -1,10 +1,12 @@
+package finalds;
+
 
 import finalds.Contact;
 import finalds.Event;
 
 
 
-public class BST<K extends Comparable<K>,T> {
+public  class BST<K extends Comparable<K>,T> {
     //================================================================================
     class BSTNode <K extends Comparable<K>,T> {
             public K key;  
@@ -39,7 +41,7 @@ public class BST<K extends Comparable<K>,T> {
     BSTNode<K,T> root, current;
 
     /** Creates a new instance of BST */
-    public BST() {
+    public  BST() {
             root = current = null;
     }
 
@@ -308,14 +310,16 @@ public class BST<K extends Comparable<K>,T> {
     //==============================================
     // Search contcat birthday in the BST O(n)
     //==============================================
-    public void SearchSameFirstName(String name)
+    public  void SearchSameFirstName(String name)
     {
         SearchSameFirstName_rec (root, name);
     }
-    private void SearchSameFirstName_rec (BSTNode <K, T> p, String name)
+    private  void SearchSameFirstName_rec (BSTNode <K, T> p, String name)
     {
-        if (p == null)
-            return ;
+        if (p == null){
+           System.out.println("The Event list is empty.");
+
+            return ;}
         else    if (((Contact)p.data).compareFirstName(name) == 0)
             System.out.println(p.data);
        

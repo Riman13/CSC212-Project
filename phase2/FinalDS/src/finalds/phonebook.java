@@ -24,28 +24,17 @@ public class phonebook {
     public boolean addContact(Contact c) {
 
         
-        if (!contacts.empty()&& contacts.search(c))
+        if (!contacts.empty() && contacts.findkey(c.getContact_name()))
         {
                 
                 return false;
         }
         
-        if (!contacts.isEmpty())
-        {
-            contacts.findFirst();
-            for (int i = 0; i < contacts.size ; i++)
-            {
-                    if (contacts.retrieve().getPhoneNumber().compareTo(c.getPhoneNumber()) == 0)
-                    {
-                            
-                            return false;
-                    }
-                    contacts.findNext();
-            }
-        }    
-
-        
-        contacts.insertSort(c);
+        if (!contacts.empty() && (contacts.SearchPhone(c.getPhoneNumber()))){
+            return false;
+        }
+                 
+        contacts.insert(c.getContact_name(), c);
            
         return true;
         
@@ -54,12 +43,16 @@ public class phonebook {
     }
     
     public  boolean addEvent(Event e) {
-        if (events.search(e) == false) {
-            events.insertSort(e);
-            return true ;
+        if (!events.empty() && events.findkey(e.getTitle()))
+        {
+                
+                return false;
         }
-        else 
-            return false ;
+        
+                 
+        events.insert(e.getTitle(), e);
+           
+        return true;
     }
  /*   
    public boolean removeContact(Contact c) {
@@ -154,7 +147,7 @@ public void deleteContactWithEvents(String name) {
                 }
             }
 
-            System.out.println("ontact " + deletedContact + " has been deleted successfully");
+            System.out.println("contact Info:\n " + deletedContact + "\nhas been deleted successfully");
         } else {
             System.out.println("Contact not found!");
         }
@@ -362,25 +355,17 @@ public void searchEventBycontact(String contactName) {
     
     public void printAlphebeticllyOrder() {
 
-        if (events.isEmpty()) {
+        if (events.empty()) {
             System.out.println("No events found !");
             return;
         }//end if
         
 
-
-        events.findFirst();
-        for (int i = 1; i <= events.size; i++) {
-        	
-         System.out.println("Event title:"+events.retrieve().getTitle());
-         System.out.println("Event date and time (MM/DD/YYYY HH:MM):"+events.retrieve().getDate()+events.retrieve().getTime());
-         System.out.println("Event location: "+events.retrieve().getLocation());
-        
-        events.findNext();
+        System.out.println(events.toString());
 
         }//end for
 
-    }//end method
+    //end method
 public static void displayMenu() {
     
     System.out.println("\nPlease choose an option:");
@@ -515,7 +500,11 @@ public void schedule(Event e, String con) {
             
     }}
 */
+    void SearchSamefName(String fname) {
+        contacts.SearchSameFirstName(fname);
+    }
 
 }
+
     
 
