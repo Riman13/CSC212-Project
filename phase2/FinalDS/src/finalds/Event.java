@@ -116,8 +116,8 @@ public class Event implements Comparable<Event> {
         String str = "\nEvent title: " + title +
                     "\nEvent date and time (MM/DD/YYYY HH:MM): " + date+" " + time +
                    "\nEvent location: " + location + "\n" +
-                   "\nType: " + EventT + "\n" +
-                    "\nContacts names:   \n" + contcts_Name.toString();
+                   "\nType: " + EventT + "\n" ;
+                    
                 
           return str;
     }

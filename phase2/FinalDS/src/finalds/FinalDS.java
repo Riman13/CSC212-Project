@@ -151,17 +151,18 @@ public class FinalDS {
                     break;
 
                 case 4:
-                 System.out.println("Enter type:");
+                 System.out.println("Enter type:\n");
                     System.out.println("1. event");
-                    System.out.println("2. appointment");
+                    System.out.println("2. appointment\n");
                     
                     System.out.print("Enter your choice: ");
+                    
                     int ScheduleEA = input.nextInt();
                     
-                    input.nextLine();
+
                     switch(ScheduleEA){
                         case 1:
-                         
+        input.nextLine();
                 System.out.print("Enter event title: ");
                 String eventTitle = input.nextLine();
                 System.out.print("Enter contact name: ");
@@ -180,7 +181,7 @@ public class FinalDS {
                     break;
 
                     case 2:
-                      
+     input.nextLine();
                 System.out.print("Enter appointment title: ");
                 String eventTitle2 = input.nextLine();
                 System.out.print("Enter appointment name: ");

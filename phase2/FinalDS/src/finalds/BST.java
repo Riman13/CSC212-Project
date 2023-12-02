@@ -317,9 +317,8 @@ public  class BST<K extends Comparable<K>,T> {
     private  void SearchSameFirstName_rec (BSTNode <K, T> p, String name)
     {
         if (p == null){
-           System.out.println("The Event list is empty.");
 
-            return ;}
+           return ;}
         else    if (((Contact)p.data).compareFirstName(name) == 0)
             System.out.println(p.data);
        

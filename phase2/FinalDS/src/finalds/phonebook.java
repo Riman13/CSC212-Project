@@ -277,10 +277,12 @@ public void searchEventBycontact(String contactName) {
     if (!contacts.empty()) {
         if (contacts.findkey(contactName)) {
             Contact contact = contacts.retrieve();
-            System.out.println("Contact found!");
-            
+            System.out.println("\nContact found!\n");
+            System.out.println(contact.toString()+"\n");
+
             if (!contact.events_contact.isEmpty()) {
                 contact.events_contact.findFirst();
+                System.out.println("events info: \n");
                 for (int i = 0; i < contact.events_contact.size; i++) {
                     Event event = contact.events_contact.retrieve();
                     System.out.println(event.toString());
@@ -302,11 +304,8 @@ public Event searchByEventTiltle(String title) {
         if (events.findkey(title)) {
             return events.retrieve();
         } else {
-            System.out.println("Event not found!");
-        }
-    } else {
-        System.out.println("The events list is empty.");
-    }
+            return null;}}
+
     return null;
 }
  
