@@ -151,8 +151,14 @@ public class FinalDS {
                     break;
 
                 case 4:
-    
-                input.nextLine();
+                 System.out.println("Enter type:");
+                    System.out.println("1. event");
+                    System.out.println("2. appointment");
+                    int ScheduleEA = input.nextInt();
+                    input.nextLine();
+                    switch(ScheduleEA){
+                        case 1:
+                          input.nextLine();
                 System.out.print("Enter event title: ");
                 String eventTitle = input.nextLine();
                 System.out.print("Enter contact name: ");
@@ -168,6 +174,28 @@ public class FinalDS {
                 Event event = new Event(eventTitle, eventDate, eventTime, location, true, contactForEvent);
                 p1.schedule(event, contactName1);
 
+                    break;
+
+                    case 2:
+                      input.nextLine();
+                System.out.print("Enter appointment title: ");
+                String eventTitle2 = input.nextLine();
+                System.out.print("Enter appointment name: ");
+                String contactName2 = input.nextLine();
+                System.out.print("Enter appointment date: ");
+                String eventDate2 = input.nextLine();
+                System.out.print("Enter appointment Time: ");
+                String eventTime2 = input.nextLine();
+                System.out.print("Enter appointment location: ");
+                String location2 = input.nextLine();
+
+                Contact contactForEvent2 = new Contact(contactName2);
+                Event event2 = new Event(eventTitle2, eventDate2, eventTime2, location2, true, contactForEvent2);
+                p1.schedule(event2, contactName2);
+
+                    break;
+
+                    }
                     break;
 
                 case 5:
