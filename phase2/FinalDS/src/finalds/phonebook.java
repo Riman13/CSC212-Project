@@ -136,7 +136,7 @@ public void deleteContactWithEvents(String name) {
                         Event updatedEvent = (Event) events.retrieve();
                         updatedEvent.removeContact(name);
 
-                        if (updatedEvent.getContcts_Name().isEmpty()) {
+                        if (updatedEvent.contcts_Name.isEmpty()) {
                             events.removeKey(event.getTitle());
                             System.out.println("the event has been deleted because it doesn't have any contacts.");
                         } else {
@@ -278,7 +278,7 @@ public void searchEventBycontact(String contactName) {
         if (contacts.findkey(contactName)) {
             Contact contact = contacts.retrieve();
             System.out.println("\nContact found!\n");
-            System.out.println(contact.toString()+"\n");
+            System.out.println("contact Name : " +contact.getContact_name());
 
             if (!contact.events_contact.isEmpty()) {
                 contact.events_contact.findFirst();
@@ -502,8 +502,9 @@ public void schedule(Event e, String con) {
     }}
 */
     void SearchSamefName(String fname) {
-        if( !contacts.findkey(fname) || contacts.empty() )
+        if(contacts.empty() )
             System.out.println("\nContact not found!");
+        else
         contacts.SearchSameFirstName(fname);
     }
 

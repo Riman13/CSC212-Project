@@ -1,8 +1,7 @@
 package finalds;
 
 
-import finalds.Contact;
-import finalds.Event;
+
 
 
 
@@ -311,7 +310,9 @@ public  class BST<K extends Comparable<K>,T> {
     // Search contcat birthday in the BST O(n)
     //==============================================
     public  void SearchSameFirstName(String name)
+            
     {
+        
         SearchSameFirstName_rec (root, name);
     }
     private  void SearchSameFirstName_rec (BSTNode <K, T> p, String name)

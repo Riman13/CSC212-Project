@@ -115,8 +115,10 @@ public class Event implements Comparable<Event> {
         String EventT = (this.EventType == true)? "Event ": "Appoinment ";     
         String str = "\nEvent title: " + title +
                     "\nEvent date and time (MM/DD/YYYY HH:MM): " + date+" " + time +
-                   "\nEvent location: " + location + "\n" +
+                   "\nEvent location: " + location  +
                    "\nType: " + EventT + "\n" ;
+                   
+                    
                     
                 
           return str;
