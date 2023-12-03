@@ -129,37 +129,29 @@ public class LinkedList<T extends Comparable<T>> {
 
     }
 
-    public T remove(T val) {
+public T remove (T val) {
+            
+        if (search (val) == false)
+         return null;
 
-//check if it is found or not with search method 
-        if (search(val) == false) {
-            return null;
-        }
-
-        T tmp = current.data;
-
-//check head
+        T data = current.getData();
+        
         if (current == head) {
-            head = head.next;
-        } else {
-            Node<T> p = head.next;
-            Node<T> q = head;
-
-            while (p != tmp) {
-
-                q = p;
-                p = p.next;
-
-            }
-
-            if (p == tmp) {
-
-                q.next = p.next;
-            }
+                head = head.next;
         }
-        size--;
-        return tmp;
+        else {
+                Node tmp = head;
 
+                while (tmp.next != current)
+                        tmp = tmp.next;
+               tmp.next = current.next;
+        }
+        if (current.next == null)
+                current = head;
+        else
+                current = current.next;
+        size -- ;
+        return data;    
     }
     public  String  print()  {
         

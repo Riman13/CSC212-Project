@@ -62,7 +62,7 @@ package finalds;
 
 
 
-    public boolean removeEventFromContac(Event e) {
+    public boolean removeEventFromContact(Event e) {
         if (events_contact.isEmpty()) {
             return false;
         }
@@ -73,6 +73,7 @@ package finalds;
         }
         return false;
     }
+    
         public boolean removeEvent( String eventTitle)
     {
         if (events_contact.isEmpty())

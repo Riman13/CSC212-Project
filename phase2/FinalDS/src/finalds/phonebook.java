@@ -113,22 +113,23 @@ public class phonebook {
     }
 
     public void deleteContactWithEvents(String name) {
+
         if (!contacts.empty()) {
             if (contacts.findkey(name)) {
-                Contact deletedContact = (Contact) contacts.retrieve();
+                Contact deletedContact = contacts.retrieve();
                 contacts.removeKey(name);
 
                 if (!deletedContact.events_contact.isEmpty()) {
                     deletedContact.events_contact.findFirst();
                     for (int i = 0; i < deletedContact.events_contact.size; i++) {
-                        Event event = (Event) deletedContact.events_contact.retrieve();
+                        Event event = deletedContact.events_contact.retrieve();
                         if (events.findkey(event.getTitle())) {
-                            Event updatedEvent = (Event) events.retrieve();
-                            updatedEvent.removeContact(name);
+                            Event updatedEvent = events.retrieve();
+                            updatedEvent.removeContactFromEvent(deletedContact);
 
                             if (updatedEvent.contcts_Name.isEmpty()) {
                                 events.removeKey(event.getTitle());
-                                System.out.println("the event has been deleted because it doesn't have any contacts.");
+                                System.out.println("\nthe event has been deleted because it doesn't have any contacts.");
                             } else {
                                 events.update(updatedEvent.getTitle(), updatedEvent);
                             }
@@ -478,7 +479,7 @@ public Contact searchByName(String n) {
                             && (eventFound.time.compareTo(e.time)== 0 ))
                     {
                         System.out.println("\nCould not add more than contact for an appoinment");
-                        c.removeEventFromContac(e);
+                         c.removeEventFromContact(e);
                         return;                        
                     }
                 }

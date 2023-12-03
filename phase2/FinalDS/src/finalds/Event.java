@@ -67,6 +67,7 @@ public class Event implements Comparable<Event> {
 
     }
 
+
     //setter and getter
 
     public String getTitle() {
