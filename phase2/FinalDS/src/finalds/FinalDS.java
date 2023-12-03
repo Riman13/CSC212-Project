@@ -232,7 +232,7 @@ public class FinalDS {
                             String searchEventTitle = input.nextLine();
                             Event result = p1.searchByEventTiltle(searchEventTitle);
                             if (result != null)
-                                System.out.println("Event found!\n" + result.toString());
+                                System.out.println("\nEvent found!\n" + result.toString());
                             else
                                 System.out.println("No Event found!");
                             break;

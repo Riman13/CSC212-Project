@@ -147,7 +147,7 @@ public void deleteContactWithEvents(String name) {
                 }
             }
 
-            System.out.println("contact Info:\n " + deletedContact + "\nhas been deleted successfully");
+            System.out.println("\ncontact Info:\n " + deletedContact + "\nhas been deleted successfully");
         } else {
             System.out.println("Contact not found!");
         }
@@ -282,7 +282,7 @@ public void searchEventBycontact(String contactName) {
 
             if (!contact.events_contact.isEmpty()) {
                 contact.events_contact.findFirst();
-                System.out.println("events info: \n");
+                System.out.println("\nevents info: \n");
                 for (int i = 0; i < contact.events_contact.size; i++) {
                     Event event = contact.events_contact.retrieve();
                     System.out.println(event.toString());
