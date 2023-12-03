@@ -38,25 +38,27 @@ package finalds;
 
 
 
-        public boolean addEventInContact(Event e) {
-
-            if (!events_contact.isEmpty()) {
-
-                events_contact.findFirst();
-
-                for (int i = 0; i < events_contact.size; i++) {
-
-                    if ((events_contact.retrieve().getDate().compareTo(e.getDate()) == 0) && (events_contact.retrieve().getTime().compareTo(e.getTime()) == 0)) {
-                        return false;
+    public boolean addEventInContact( Event e)
+            
+    {
+        boolean check = e.EventType;
+        if (  (!check && e.contcts_Name.size==0) || check)
+        {
+                if (! events_contact.isEmpty())
+                {
+                    events_contact.findFirst();
+                    for ( int i = 0 ; i < events_contact.size ; i++)
+                    {
+                        if ((events_contact.retrieve().date.compareTo(e.date) == 0) 
+                                && (events_contact.retrieve().time.compareTo(e.time) == 0))
+                            return false;
                     }
-
-                    events_contact.findNext();
-
-                } // END FOR , CHECK CONFLICT EVENT 
-            }//End if
+              }
             events_contact.insertSort(e);
             return true;
         }
+        return false;
+    }
 
 
 

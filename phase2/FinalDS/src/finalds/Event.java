@@ -14,6 +14,17 @@ public class Event implements Comparable<Event> {
     boolean EventType;  // event true , appointment = false;
     LinkedList <Contact> contcts_Name;
 
+    public Event(String title, String date, String time, String location, boolean EventType) {
+        this.title = title;
+        this.date = date;
+        this.time = time;
+        this.location = location;
+        this.EventType = EventType;
+        this.contcts_Name = new LinkedList<Contact> ();
+    }
+    
+    
+
     public Event(String title, String date, String time, String location, boolean t, Contact c) {
         this.title = title;
         this.date = date;

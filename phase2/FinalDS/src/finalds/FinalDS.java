@@ -163,7 +163,7 @@ public class FinalDS {
                     switch(ScheduleEA){
                         case 1:
         input.nextLine();
-                System.out.print("Enter event title: ");
+                System.out.print("\nEnter event title: ");
                 String eventTitle = input.nextLine();
                 System.out.print("Enter contact name: ");
                 String contactName1 = input.nextLine();
@@ -175,16 +175,16 @@ public class FinalDS {
                 String location = input.nextLine();
 
                 Contact contactForEvent = new Contact(contactName1);
-                Event event = new Event(eventTitle, eventDate, eventTime, location, true, contactForEvent);
+                Event event = new Event(eventTitle, eventDate, eventTime, location, true);
                 p1.schedule(event, contactName1);
 
                     break;
 
                     case 2:
      input.nextLine();
-                System.out.print("Enter appointment title: ");
+                System.out.print("\nEnter appointment title: ");
                 String eventTitle2 = input.nextLine();
-                System.out.print("Enter appointment name: ");
+                System.out.print("Enter contact name: ");
                 String contactName2 = input.nextLine();
                 System.out.print("Ent1er appointment date: ");
                 String eventDate2 = input.nextLine();
@@ -194,7 +194,7 @@ public class FinalDS {
                 String location2 = input.nextLine();
 
                 Contact contactForEvent2 = new Contact(contactName2);
-                Event event2 = new Event(eventTitle2, eventDate2, eventTime2, location2, true, contactForEvent2);
+                Event event2 = new Event(eventTitle2, eventDate2, eventTime2, location2,false);
                 p1.schedule(event2, contactName2);
 
                     break;
