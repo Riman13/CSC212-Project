@@ -142,11 +142,7 @@ public class FinalDS {
                     // cc.setContact_name(input.nextLine());
                     p1.deleteContactWithEvents(input.nextLine());
 
-                  /*  if (p1.removeContact(cc)) {
-                        System.out.print("\nContacte deleted succsecfilly\n ");
-                    } else {
-                        System.out.print("\nContacte was not found\n ");
-                    }*/
+
 
                     break;
 

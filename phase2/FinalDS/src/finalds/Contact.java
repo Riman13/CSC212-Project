@@ -146,18 +146,7 @@ package finalds;
                 + "\nAddress: " + address
                 + "\nBirthday: " + birthday
                 + "\nNotes: " + notes;
-            /*    + "\nEvents details:";
 
-        events_contact.findFirst();
-        for (int i = 0; i < events_contact.size; i++) {
-            str += "\nEvent title: "+events_contact.retrieve().getTitle()  
-                +"\nEvent date and time (MM/DD/YYYY HH:MM): "+ events_contact.retrieve().getDate()+"  "+ events_contact.retrieve().getTime() 
-                +"\nEvent location: "+events_contact.retrieve().getLocation() +"\n";
-            events_contact.findNext();
-        }
-        
-                if( events_contact.size == 0)
-            str+="\nThere is no Events\n ";*/
         return str;
     }
     

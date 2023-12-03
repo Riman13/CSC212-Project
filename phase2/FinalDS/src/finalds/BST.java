@@ -6,13 +6,13 @@ package finalds;
 
 
 public  class BST<K extends Comparable<K>,T> {
-    //================================================================================
+
     class BSTNode <K extends Comparable<K>,T> {
             public K key;  
             public T data;
             public BSTNode<K,T> left, right;
 
-            /** Creates a new instance of BTNode */
+
             public BSTNode() {
                     left = right = null;
             }
@@ -36,10 +36,10 @@ public  class BST<K extends Comparable<K>,T> {
         }
 
     }
-    //================================================================================
+
     BSTNode<K,T> root, current;
 
-    /** Creates a new instance of BST */
+
     public  BST() {
             root = current = null;
     }
@@ -82,8 +82,8 @@ public  class BST<K extends Comparable<K>,T> {
             BSTNode<K,T>  q = current;
 
             if(findkey(k)) {
-                    current = q;  // findkey() modified current
-                    return false; // key already in the BST
+                    current = q;  
+                    return false; 
             }
 
             p = new BSTNode<K,T> (k, val);
@@ -92,7 +92,7 @@ public  class BST<K extends Comparable<K>,T> {
                     return true;
             }
             else {
-                    // current is pointing to parent of the new key
+
                     if (k.compareTo(current.key) < 0)
                             current.left = p;
                     else
@@ -125,7 +125,7 @@ public  class BST<K extends Comparable<K>,T> {
     // Search 
     K k1 = k;      
     BSTNode<K,T>  p = root;      
-    BSTNode<K,T>  q = null;    // Parent of p
+    BSTNode<K,T>  q = null;    
     
     while (p != null) 
     {
@@ -140,12 +140,10 @@ public  class BST<K extends Comparable<K>,T> {
             p = p.right;
         } 
         else { 
-            // Found the key            
-            // Check the three cases
+
             if ((p.left != null) && (p.right != null)) 
             { 
-	// Case 3: two children                
-                    // Search for the min in the right subtree
+
                     BSTNode<K,T>  min = p.right;
                     q = p;
                     while (min.left != null) 
@@ -157,23 +155,23 @@ public  class BST<K extends Comparable<K>,T> {
                     p.data = min.data;
                     k1 = min.key;
                     p = min;
-                    // Now fall back to either case 1 or 2
+                    
             }
-            // The subtree rooted at p will change here             
+             
             if (p.left != null) 
             { 
-                // One child
+                
                 p = p.left;
             } 
             else 
             { 
-                // One or no children
+                
                 p = p.right;
             }
             
             if (q == null) 
             { 
-                // No parent for p, root must change
+                
                 root = p;
             } 
             else 
@@ -191,12 +189,10 @@ public  class BST<K extends Comparable<K>,T> {
             return true;
         }
     }
-    return false; // Not found
+    return false; 
     }
-    //======================================================================================
-    /* 
-    In order traversal
-    */
+
+
     @Override
     public String toString() 
     {
@@ -220,9 +216,7 @@ public  class BST<K extends Comparable<K>,T> {
         return str;
     }
 
-    //==============================================
-    // Search contcat phone in the BST O(n)
-    //==============================================
+
     public boolean SearchPhone(String phone)
     {
         return SearchPhone_rec (root, phone);
@@ -241,9 +235,7 @@ public  class BST<K extends Comparable<K>,T> {
         return (SearchPhone_rec(p.left , phone) || SearchPhone_rec(p.right, phone));
     }
 
-    //==============================================
-    // Search contcat email in the BST O(n)
-    //==============================================
+
     public boolean SearchEmail(String email)
     {
        return SearchEmail_rec (root, email);
@@ -263,9 +255,7 @@ public  class BST<K extends Comparable<K>,T> {
       return  SearchEmail_rec(p.left , email)|| SearchEmail_rec(p.right, email);
     }
     
-    //==============================================
-    // Search contcat address in the BST O(n)
-    //==============================================
+
     public boolean SearchAddress(String address)
     {
        return SearchAddress_rec (root, address);
@@ -285,9 +275,7 @@ public  class BST<K extends Comparable<K>,T> {
         return SearchAddress_rec(p.left , address)||SearchAddress_rec(p.right, address);
     }
     
-    //==============================================
-    // Search contcat birthday in the BST O(n)
-    //==============================================
+
     public boolean SearchBirthday(String birthday)
     {
         return SearchBirthday_rec (root, birthday);
@@ -306,9 +294,7 @@ public  class BST<K extends Comparable<K>,T> {
         return SearchBirthday_rec(p.left , birthday)|| SearchBirthday_rec(p.right, birthday);
     }
 
-    //==============================================
-    // Search contcat birthday in the BST O(n)
-    //==============================================
+
     public  void SearchSameFirstName(String name)
             
     {
@@ -327,9 +313,7 @@ public  class BST<K extends Comparable<K>,T> {
         SearchSameFirstName_rec(p.right, name);
     }
 
-    //==============================================
-    // Search same Event data in the BST O(n)
-    //==============================================
+
     public boolean SearchSameEvent(Event event)
     {
         return SearchSameEvent_rec (root, event);
