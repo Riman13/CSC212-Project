@@ -478,6 +478,7 @@ public Contact searchByName(String n) {
                             && (eventFound.time.compareTo(e.time)== 0 ))
                     {
                         System.out.println("\nCould not add more than contact for an appoinment");
+                        c.removeEventFromContac(e);
                         return;                        
                     }
                 }
